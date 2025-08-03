@@ -1,7 +1,15 @@
-import './App.css';
+import Footer from './components/Footer';
+import Main from './components/Main';
+import SideBar from './components/SideBar';
 
 function App() {
-  return <h1>NASA APD API</h1>;
+  return (
+    <>
+      <Main />
+      <SideBar />
+      <Footer />
+    </>
+  );
 }
 
 export default App;
