@@ -1,4 +1,7 @@
-function SideBar() {
+import PropTypes from 'prop-types';
+
+function SideBar(props) {
+  const { handleToggleModal } = props;
   return (
     <div className="sidebar">
       <div className="bgOverlay" />
@@ -9,10 +12,20 @@ function SideBar() {
           <p>Lorem ipsum</p>
         </div>
       </div>
-      <button type="button" aria-label="Close Sidebar" onClick={() => {}}>
+      <button
+        type="button"
+        aria-label="Close Sidebar"
+        onClick={() => {
+          handleToggleModal();
+        }}
+      >
         <i className="fa-solid fa-arrow-right" />
       </button>
     </div>
   );
 }
 export default SideBar;
+
+SideBar.propTypes = {
+  handleToggleModal: PropTypes.func.isRequired,
+};
