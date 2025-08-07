@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
 function Footer(props) {
-  const { handleToggleModal } = props;
+  const { handleToggleModal, data } = props;
 
   return (
     <footer>
       <div className="bgGradient" />
       <div>
-        <h2>The Brutal Martian Landscape</h2>
+        <h2>{data?.title}</h2>
         <h1>APOD PROJECT</h1>
       </div>
       <button
@@ -25,5 +25,8 @@ function Footer(props) {
 export default Footer;
 
 Footer.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+  }).isRequired,
   handleToggleModal: PropTypes.func.isRequired,
 };

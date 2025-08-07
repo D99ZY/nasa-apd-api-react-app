@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 
 function SideBar(props) {
-  const { handleToggleModal } = props;
+  const { handleToggleModal, data } = props;
   return (
     <div className="sidebar">
       <div className="bgOverlay" />
       <div className="sidebarContents">
-        <h2>The Brutal Martian Landscape</h2>
+        <h2>{data?.title}</h2>
         <div className="descriptionContainer">
-          <p className="descriptionTitle">Description</p>
-          <p>Lorem ipsum</p>
+          <p className="descriptionTitle">{data?.date}</p>
+          <p className="descriptionText">{data?.explanation}</p>
         </div>
         <button
           type="button"
@@ -27,5 +27,10 @@ function SideBar(props) {
 export default SideBar;
 
 SideBar.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    explanation: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+  }).isRequired,
   handleToggleModal: PropTypes.func.isRequired,
 };
