@@ -7,8 +7,8 @@ function Footer(props) {
     <footer>
       <div className="bgGradient" />
       <div>
-        <h2>{data?.title}</h2>
         <h1>APOD PROJECT</h1>
+        <h2>{data?.title}</h2>
       </div>
       <button
         type="button"
