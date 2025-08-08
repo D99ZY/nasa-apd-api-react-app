@@ -29,6 +29,7 @@
     "import/no-extraneous-dependencies": ["error", {"devDependencies": [
       "vite.config.js"
     ]}],
-    "key-spacing": "warn"
+    "key-spacing": "warn",
+    "no-console": ["error", { "allow": ["warn", "error"] }]
   }
 }
