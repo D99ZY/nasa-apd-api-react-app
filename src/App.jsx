@@ -5,7 +5,6 @@ import SideBar from './components/SideBar';
 
 function App() {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   const handleToggleModal = useCallback(() => {
@@ -16,14 +15,22 @@ function App() {
     const NASA_KEY = import.meta.env.VITE_NASA_API_KEY;
     async function fetchAPIData() {
       const url = `https://api.nasa.gov/planetary/apod?api_key=${NASA_KEY}`;
+
+      const today = new Date().toDateString();
+      const localKey = `NASA-${today}`;
+      if (localStorage.getItem(localKey)) {
+        const apiData = JSON.parse(localStorage.getItem(localKey));
+        setData(apiData);
+        return;
+      }
+      localStorage.clear();
       try {
         const res = await fetch(url);
         const resData = await res.json();
-        console.log('DATA\n', resData);
+        localStorage.setItem(localKey, JSON.stringify(resData));
         setData(resData);
       } catch (error) {
-        console.log(error.message);
-        console.error(error.message);
+        console.error('Error object:', error);
       }
     }
     fetchAPIData();
