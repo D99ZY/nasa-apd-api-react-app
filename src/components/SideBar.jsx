@@ -4,7 +4,18 @@ function SideBar(props) {
   const { handleToggleModal, data } = props;
   return (
     <div className="sidebar">
-      <div className="bgOverlay" />
+      <div
+        className="bgOverlay"
+        onClick={handleToggleModal}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            handleToggleModal();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+        aria-label="Close modal"
+      />
       <div className="sidebarContents">
         <h2>{data?.title}</h2>
         <div className="descriptionContainer">
